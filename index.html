@@ -1,208 +1,95 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sana Bir Mesajım Var Zühre ❤️</title>
+    <title>Zühre İçin Özel Sürpriz</title>
     <style>
-        * {
-            box-sizing: border-box;
+        body {
             margin: 0;
             padding: 0;
-        }
-        body {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            justify-content: center;
+            height: 100vh;
             overflow: hidden;
+            color: white;
             text-align: center;
         }
-
-        /* Hediye Kutusu Stilleri */
-        .gift-container {
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.2s ease;
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            padding: 0 10px;
         }
-        .gift-container:active {
+        .game-container {
+            width: 90%;
+            max-width: 400px;
+            height: 300px;
+            border: 3px solid white;
+            border-radius: 15px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .proposal {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease-in-out;
+            padding: 20px;
+        }
+        .proposal h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+        }
+        .btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+        .btn:active {
             transform: scale(0.95);
         }
-        .gift-box {
-            width: 140px;
-            height: 140px;
-            background: #e74c3c;
-            position: relative;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            margin: 0 auto;
-        }
-        /* Şeritler */
-        .gift-box::before {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 100%;
-            background: #f1c40f;
-            left: 55px;
-            top: 0;
-        }
-        .gift-box::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 30px;
-            background: #f1c40f;
-            top: 55px;
-            left: 0;
-        }
-        /* Kutu Kapağı */
-        .gift-lid {
-            width: 160px;
-            height: 40px;
-            background: #c0392b;
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            border-radius: 5px;
-            z-index: 2;
-            transition: transform 0.8s ease, opacity 0.8s ease;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-        }
-        .gift-lid::before {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 100%;
-            background: #f1c40f;
-            left: 65px;
-        }
-
-        /* Tıklama Sayacı İpucu */
-        .hint {
-            margin-top: 25px;
-            font-size: 1.2rem;
-            color: #d63031;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.6);
-            padding: 8px 18px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Sürpriz Mesaj Kartı */
-        .card {
-            display: none;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 30px 25px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            max-width: 90%;
-            width: 420px;
-            animation: popup 0.8s ease forwards;
-            border: 2px solid #ff7675;
-        }
-
-        @keyframes popup {
-            0% { opacity: 0; transform: scale(0.5) translateY(50px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .card h1 {
-            color: #d63031;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: #2d3436;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .romantic-text {
-            font-style: italic;
-            color: #e84393;
-            font-size: 1rem !important;
-            padding-top: 10px;
-        }
-
-        /* Kalp Animasyonları */
-        .heart {
-            position: absolute;
-            color: #e84393;
-            font-size: 20px;
-            pointer-events: none;
-            animation: float 4s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Hediye Kutusu Alanı -->
-    <div id="gift-section">
-        <div class="gift-container" onclick="openGift()">
-            <div class="gift-lid" id="lid"></div>
-            <div class="gift-box"></div>
-        </div>
-        <div class="hint" id="hint-text">Açmak için kutuya tıkla! (5)</div>
+    <div id="gameScreen" class="game-container">
+        <h1>🏐 Zühre, Voleybol Maçına Hazır Mısın? 🏐</h1>
+        <p style="margin-bottom: 20px; padding: 0 10px;">Sürprizi açmak için aşağıdaki butona tıkla!</p>
+        <button class="btn" onclick="startProposal()">Topa Vur & Sürprizi Gör!</button>
     </div>
 
-    <!-- Açılan Mesaj Kartı -->
-    <div class="card" id="message-card">
-        <h1>✨ ROJAT seni çook sevio ZÜHRE ✨</h1>
-        <p><b>Seviorum seni aşkmmm ❤️</b></p>
-        <p class="romantic-text">
-            "Sen benim hayatıma gelen en güzel hediyesin. Her gülüşünle dünyamı aydınlatıyor, her bakışınla içimi ısıtıyorsun. İyi ki varsın, iyi ki benimlesin... Kalbimin tek sahibi Zühre'm!" 🌹
-        </p>
+    <div class="proposal" id="proposalScreen">
+        <h2>Zühre'm, Benimle Evlenir Misin? 💍❤️</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">Kalbimin tek sahibisin!</p>
+        <button class="btn" onclick="alert('EVET dedi! Dünyanın en mutlu adamısın Rojat! 🎉❤️')">EVET! 🥰</button>
     </div>
 
     <script>
-        let clicksLeft = 5;
-
-        function openGift() {
-            if (clicksLeft > 1) {
-                clicksLeft--;
-                document.getElementById('hint-text').innerText = `Açılmasına ${clicksLeft} tık kaldı! ❤️`;
-            } else if (clicksLeft === 1) {
-                // Kutuyu aç
-                document.getElementById('lid').style.transform = 'translateY(-120px) rotate(-20deg)';
-                document.getElementById('lid').style.opacity = '0';
-                document.getElementById('hint-text').style.display = 'none';
-                
-                setTimeout(() => {
-                    document.getElementById('gift-section').style.display = 'none';
-                    document.getElementById('message-card').style.display = 'block';
-                    startHearts();
-                }, 600);
-                clicksLeft = 0;
-            }
-        }
-
-        // Arka planda kalpler uçurma efekti
-        function startHearts() {
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-                heart.style.fontSize = Math.random() * 15 + 15 + 'px';
-                document.body.appendChild(heart);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 5000);
-            }, 300);
+        function startProposal() {
+            document.getElementById('gameScreen').style.display = 'none';
+            document.getElementById('proposalScreen').style.display = 'flex';
         }
     </script>
 </body>
